@@ -73,9 +73,7 @@
             background: url('/public/Photoes/HeartIcon.png');
             background-blend-mode: darken;
         }
-        .footer {
-            margin-top: 400px !important;
-        }
+
     </style>
 @endsection
 @section('catalogcon')

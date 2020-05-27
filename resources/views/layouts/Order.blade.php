@@ -120,6 +120,7 @@
         }
         .col-10 {
             border-left: 1px solid orange;
+            padding-bottom: 20px;
         }
         .heart:hover {
             color: red;
@@ -164,7 +165,6 @@
         .footer {
             width: 100%;
             display: flex;
-            margin: 0;
         }
         .copyrightClass {
             background-color: #FE9D3B;
@@ -177,111 +177,146 @@
         .lastInfo {
             margin-bottom: 30px;
         }
+        .rectangle {
+            width: 10px;
+            height: 10px;
+            margin-left: 2%;
+            margin-top: 10px;
+            transform: rotate(45deg);
+            background-color: black;
+        }
+        .jenres {
+            width: 320px;
+        }
+        .firstJenre {
+            display: flex;
+        }
+        .jenreText {
+            color: black;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .jenreText:hover {
+            color: #ffd451;
+        }
+        .results {
+            width: 100%;
+            height: 100%;
+            background-color: #EFEFEF;
+            align-items: center;
+            text-align: center;
+        }
+        .main {
+            width: 100%;
+            height: 500px;
+            display: flex;
+        }
     </style>
     @yield('catalogStyle')
 </head>
 
 <body>
-<div class="header">
-    <div class="col-2">
-        <img src="http://127.0.0.1:8000/Photoes/mainPicture.jpg"
-             class="main_picture"
-             height=135px
-             width=220px
-             alt="Book Shop Be Smart"/>
-        <div>
+    <div class="header">
+        <div class="col-2">
+            <img src="http://127.0.0.1:8000/Photoes/mainPicture.jpg"
+                 class="main_picture"
+                 height=135px
+                 width=220px
+                 alt="Book Shop Be Smart"/>
             <div>
-                <p class="opacity">Информация</p>
-                <p class="blueText">О нас<br></p>
-                <p class="blueText">Условия использования сайта<br></p>
-                <p class="blueText">Вакансии<br></p>
-                <p class="blueText">Контакты<br></p>
+                <div>
+                    <p class="opacity">Информация</p>
+                    <p class="blueText">О нас<br></p>
+                    <p class="blueText">Условия использования сайта<br></p>
+                    <p class="blueText">Вакансии<br></p>
+                    <p class="blueText">Контакты<br></p>
+                </div>
+                <div>
+                    <br>
+                    <p class="opacity">График работы</p>
+                    <p class="darkText">В будние</p>
+                    <p class="darkText">с 8:00 до 21:00</p>
+                    <p class="darkText">Суббота</p>
+                    <p class="darkText">с 9:00 до 20:00</p>
+                    <p class="darkText">Воскресенье</p>
+                    <p class="darkText">с 10:00 до 19:00</p>
+                </div>
+                <div class="lastInfo">
+                    <br>
+                    <p class="opacity">Наши библиотеки в Киеве</p>
+                    <p class="blueText">пр. Победы 1</p>
+                    <p class="blueText">ул. Академика-Янгеля 5</p>
+                </div>
+
             </div>
-            <div>
-                <br>
-                <p class="opacity">График работы</p>
-                <p class="darkText">В будние</p>
-                <p class="darkText">с 8:00 до 21:00</p>
-                <p class="darkText">Суббота</p>
-                <p class="darkText">с 9:00 до 20:00</p>
-                <p class="darkText">Воскресенье</p>
-                <p class="darkText">с 10:00 до 19:00</p>
-            </div>
-            <div class="lastInfo">
-                <br>
-                <p class="opacity">Наши библиотеки в Киеве</p>
-                <p class="blueText">пр. Победы 1</p>
-                <p class="blueText">ул. Академика-Янгеля 5</p>
+        </div>
+        <div class="col-10 upper">
+            <div class="upperRight1">
+                Мы работаем в безопасном режиме в связи с вирусом который бушует в данное время.
+                <button class="button" type="button"> Подробнее </button>
             </div>
 
-        </div>
-    </div>
-    <div class="col-10 upper">
-        <div class="upperRight1">
-            Мы работаем в безопасном режиме в связи с вирусом который бушует в данное время.
-            <button class="button" type="button"> Подробнее </button>
-        </div>
+            <div class="upperRight2">
+                <div class="phoneCall">
+                    <img class="phoneImage" src="http://127.0.0.1:8000/Photoes/phone icon.jpg" height="24"/>
+                    <u class="phoneNumber">(068) 42 81 983</u>
+                    <img class="arrowToDown" src="/open-iconic-master/svg/chevron-bottom.svg">
+                </div>
+                <p class="someText"> Другие способы связи </p>
+                <div class="user">
+                    <img class="phoneImage" src="/open-iconic-master/svg/person.svg" height=24>
+                    <p class="phoneNumber">Войти в личный кабинет</p>
+                </div>
+            </div>
 
-        <div class="upperRight2">
-            <div class="phoneCall">
-                <img class="phoneImage" src="http://127.0.0.1:8000/Photoes/phone icon.jpg" height="24"/>
-                <u class="phoneNumber">(068) 42 81 983</u>
-                <img class="arrowToDown" src="/open-iconic-master/svg/chevron-bottom.svg">
+            <div class="upperRight3">
+                <div class="katalog">
+                    <img src="/open-iconic-master/svg/grid-two-up.svg" class="rectangles">
+                    <p>Каталог</p>
+                </div>
+                <div class="searcher">
+                    <label>
+                        <input class="inputPanel">
+                    </label>
+                    <button type="button" class="btn btn-success">Поиск</button>
+                </div>
+                <img src="/open-iconic-master/svg/heart-outline.svg" title="Список желаний" class="heart">
             </div>
-            <p class="someText"> Другие способы связи </p>
-            <div class="user">
-                <img class="phoneImage" src="/open-iconic-master/svg/person.svg" height=24>
-                <p class="phoneNumber">Войти в личный кабинет</p>
-            </div>
+            @yield('janrescon')
+            @yield('catalogcon')
+            @yield('maincon')
         </div>
+    </div>
 
-        <div class="upperRight3">
-            <div class="katalog">
-                <img src="/open-iconic-master/svg/grid-two-up.svg" class="rectangles">
-                <p>Каталог</p>
+    <div class="footer">
+        <div class="socNet col-2">
+            <div class="socNetText">
+                <p>Мы в социальных сетях</p>
             </div>
-            <div class="searcher">
-                <label>
-                    <input class="inputPanel">
-                </label>
-                <button type="button" class="btn btn-success">Поиск</button>
+            <div class="socialNetworks">
+                <a href="https://www.instagram.com/dima.izvestniy/" target="_blank">
+                    <img class="socialNetwork" src="/open-iconic-master/svg/instagram.svg">
+                </a>
+                <a href="t.me/Dimon836" target="_blank">
+                    <img class="socialNetwork" src="/open-iconic-master/svg/telegram.svg">
+                </a>
+                <a href="" target="_blank">
+                    <img class="socialNetwork" src="/open-iconic-master/svg/viber.svg">
+                </a>
+                <a href="https://www.youtube.com/channel/UC2Rt3uEPfbpfTEtitjz8-1Q?view_as=subscriber" target="_blank">
+                    <img class="socialNetwork" src="/open-iconic-master/svg/youtube.svg">
+                </a>
+                <a href="" target="_blank">
+                    <img class="socialNetwork" src="/open-iconic-master/svg/facebook.svg">
+                </a>
             </div>
-            <img src="/open-iconic-master/svg/heart-outline.svg" title="Список желаний" class="heart">
         </div>
-        @yield('janrescon')
-        @yield('catalogcon')
-        @yield('maincon')
-    </div>
-</div>
-
-<div class="footer">
-    <div class="socNet col-2">
-        <div class="socNetText">
-            <p>Мы в социальных сетях</p>
-        </div>
-        <div class="socialNetworks">
-            <a href="https://www.instagram.com/dima.izvestniy/" target="_blank">
-                <img class="socialNetwork" src="/open-iconic-master/svg/instagram.svg">
-            </a>
-            <a href="t.me/Dimon836" target="_blank">
-                <img class="socialNetwork" src="/open-iconic-master/svg/telegram.svg">
-            </a>
-            <a href="" target="_blank">
-                <img class="socialNetwork" src="/open-iconic-master/svg/viber.svg">
-            </a>
-            <a href="https://www.youtube.com/channel/UC2Rt3uEPfbpfTEtitjz8-1Q?view_as=subscriber" target="_blank">
-                <img class="socialNetwork" src="/open-iconic-master/svg/youtube.svg">
-            </a>
-            <a href="" target="_blank">
-                <img class="socialNetwork" src="/open-iconic-master/svg/facebook.svg">
-            </a>
+        <div class="copyrightClass col-10">
+            <p class="copyrightText">
+                Copyright © 2020 Все права защищены.
+            </p>
         </div>
     </div>
-    <div class="copyrightClass col-10">
-        <p class="copyrightText">
-            Copyright © 2020 Все права защищены.
-        </p>
-    </div>
-</div>
 </body>
 </html>
