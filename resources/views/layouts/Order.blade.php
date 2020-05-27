@@ -164,6 +164,7 @@
         .footer {
             width: 100%;
             display: flex;
+            margin: 0;
         }
         .copyrightClass {
             background-color: #FE9D3B;
@@ -176,42 +177,8 @@
         .lastInfo {
             margin-bottom: 30px;
         }
-        .rectangle {
-            width: 10px;
-            height: 10px;
-            margin-left: 2%;
-            margin-top: 10px;
-            transform: rotate(45deg);
-            background-color: black;
-        }
-        .jenres {
-            width: 320px;
-        }
-        .firstJenre {
-            display: flex;
-        }
-        .jenreText {
-            color: black;
-            text-decoration: underline;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .jenreText:hover {
-            color: #ffd451;
-        }
-        .results {
-            width: 100%;
-            height: 100%;
-            background-color: #EFEFEF;
-            align-items: center;
-            text-align: center;
-        }
-        .main {
-            width: 100%;
-            height: 500px;
-            display: flex;
-        }
     </style>
+    @yield('catalogStyle')
 </head>
 
 <body>
@@ -226,6 +193,8 @@
             <div>
                 <p class="opacity">Информация</p>
                 <p class="blueText">О нас<br></p>
+                <p class="blueText">Условия использования сайта<br></p>
+                <p class="blueText">Вакансии<br></p>
                 <p class="blueText">Контакты<br></p>
             </div>
             <div>
@@ -279,46 +248,9 @@
             </div>
             <img src="/open-iconic-master/svg/heart-outline.svg" title="Список желаний" class="heart">
         </div>
-        <div class="main">
-            <div class="jenre">
-                <p class="opacity" style="margin-left: 2%">Жанры</p>
-                <div class="jenres">
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">романтика</p>
-                    </div>
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">драма</p>
-                    </div>
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">фантастика</p>
-                    </div>
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">фантастика</p>
-                    </div>
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">фантастика</p>
-                    </div>
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">фантастика</p>
-                    </div>
-                    <div class="firstJenre">
-                        <div class="rectangle"></div>
-                        <p class="jenreText">фантастика</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="results">
-                <p>Результаты</p>
-            </div>
-        </div>
-
+        @yield('janrescon')
+        @yield('catalogcon')
+        @yield('maincon')
     </div>
 </div>
 

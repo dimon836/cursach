@@ -240,8 +240,6 @@
                 <div>
                     <p class="opacity">Информация</p>
                     <p class="blueText">О нас<br></p>
-                    <p class="blueText">Условия использования сайта<br></p>
-                    <p class="blueText">Вакансии<br></p>
                     <p class="blueText">Контакты<br></p>
                 </div>
                 <div>
