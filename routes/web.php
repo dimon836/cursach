@@ -23,12 +23,12 @@ Route::get('/catalog', function () {
 Route::get('/janres', function () {
     return view('janres');
 });
-Route::get('/main', function () {
-    return view('main');
+Route::get('/', function () {
+    return view('Some');
 });
 Route::get('/Order', function () {
     return view('Order');
 });
-Route::get('/Some', function () {
-    return view('Some');
+Route::get('/add', function () {
+    return view('add_book');
 });
