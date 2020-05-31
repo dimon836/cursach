@@ -144,11 +144,6 @@
             padding-bottom: 20px;
         }
 
-        .heart:hover {
-            color: red;
-            transition: 0.1s;
-        }
-
         .opacity {
             margin-left: 2px;
             opacity: 0.5;
@@ -260,17 +255,17 @@
 <body>
 <div class="header">
     <div class="col-2">
-        <img src="/Photoes/mainPicture.jpg"
-             class="main_picture"
-             height=135px
-             width=220px
-             alt="Book Shop Be Smart"/>
+        <a href="/">
+            <img src="/Photoes/mainPicture.jpg"
+                 class="main_picture"
+                 height=135px
+                 width=220px
+                 alt="Book Shop Be Smart"/>
+        </a>
         <div>
             <div>
                 <p class="opacity">Информация</p>
                 <p class="blueText">О нас<br></p>
-                <p class="blueText">Условия использования сайта<br></p>
-                <p class="blueText">Вакансии<br></p>
                 <p class="blueText">Контакты<br></p>
             </div>
             <div>

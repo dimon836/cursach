@@ -62,6 +62,10 @@
             /*margin-right: 150px;*/
         }
 
+        .first {
+            margin-left: 20px;
+        }
+
         .cat-img {
             width: 175px;
             height: 246px;
@@ -132,7 +136,7 @@
         </div>
 
         <div class='btn-block'>
-            <div class='cat-btn first'><h1>Description</h1></div>
+            <div class='cat-btn first'><h1>Описание</h1></div>
             <img id='$book_dir' src='http://127.0.0.1:8000/Photoes/HeartIcon.png' class='heart'/>
         </div>
     </div>";
