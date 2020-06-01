@@ -15,3 +15,4 @@ if(isset($_FILES['image']['tmp_name'])) {
     echo "Added book";
 };
 ?>
+

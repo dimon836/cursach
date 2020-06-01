@@ -2,30 +2,27 @@
 @section('catalogStyle')
     <style>
         .titleCatalog {
-            margin-left: 499px;
             margin-top: 47px;
 
-            font-family: Roboto;
+            font-family: Roboto, serif;
             font-style: normal;
             font-weight: bold;
             font-size: 48px;
             line-height: 56px;
-            display: flex;
             align-items: center;
+            text-align: center;
 
             color: #000000;
         }
 
         .downTittleCatalog {
-            margin-left: 231px;
             margin-top: 32px;
 
-            font-family: Roboto;
+            font-family: Roboto, serif;
             font-style: normal;
             font-weight: normal;
             font-size: 36px;
             line-height: 42px;
-            display: flex;
             align-items: center;
             text-align: center;
 
@@ -64,6 +61,7 @@
 
         .first {
             margin-left: 20px;
+            margin-bottom: 20px;
         }
 
         .cat-img {
@@ -78,6 +76,7 @@
             width: 350px;
             margin-top: 39px;
             display: flex;
+
         }
 
         .cat-btn {
@@ -87,6 +86,7 @@
 
             background: #774D9F;
             border-radius: 10px;
+            cursor: pointer;
         }
 
         .cat-btn h1 {
@@ -103,56 +103,75 @@
             color: rgba(255, 255, 255, 0.98);
         }
 
-        .heart {
+        .heartIcon {
             width: 59px;
             height: 59px;
             margin-left: 11px;
             /*background-blend-mode: darken;*/
+            cursor: pointer;
+        }
+        .wrapper {
+            max-width:1200px;
+            margin: 0px auto;
         }
     </style>
 @endsection
-@section('catalogcon')
-    <div class="titleCatalog">Каталог</div>
-    <div class="downTittleCatalog">Забронируй книгу! И забери в библиотеке!</div>
-    <?php
-    if (isset($_GET['search']))
-        $str = $_GET['search'];
-    $books_dir = __DIR__ . "/../../../public/books/";
-    $books = glob($books_dir . "*");
-    foreach ($books as $book) {
-        $author = file_get_contents($book . "/author.txt");
-        $title = file_get_contents($book . "/title.txt");
-        if (isset($str)) {
-            if (strpos($title, $str) === false)
-                continue;
-        }
-        $desc = file_get_contents($book . "/desc.txt");
-        $arr = explode('/', $book);
-        $book_dir = end($arr);
-
-        echo "<div class='book first'>
-        <div class='catalogsbook first'>
-            <img src='http://127.0.0.1:8000/books/$book_dir/image.png' alt='' class='cat-img'>
-        </div>
-
-        <div class='btn-block'>
-            <div class='cat-btn first'><h1>Описание</h1></div>
-            <img id='$book_dir' src='http://127.0.0.1:8000/Photoes/HeartIcon.png' class='heart'/>
-        </div>
-    </div>";
-    }
-    ?>
-    <script>
-        let hearts = document.querySelectorAll('.btn-block .heart');
-        for (let heart of hearts) {
-            heart.onclick = (ev) => {
-                fetch("http://127.0.0.1:8000/basket.php?action=add&id=" + ev.target.id, {
-                    credentials: "same-origin"
-                })
-                    .then(resp => resp.text())
-                    .then(text => console.log(text));
-            };
-        }
-    </script>
-
+@section('content')
+    <div class="wrapper">
+        <div class="titleCatalog">Каталог</div>
+        <div class="downTittleCatalog">Забронируй книгу! И забери в библиотеке!</div>
+        @php
+            $str = request()->get('search');
+            $books_dir = __DIR__ . "/../../../public/books/";
+            $books = glob($books_dir . "*");
+        @endphp
+        @foreach($books as $book)
+            @php
+                $author = file_get_contents($book . "/author.txt");
+                $title = file_get_contents($book . "/title.txt");
+                /*if (isset($str)) {
+                    if (strpos($title, $str) === false)
+                        continue;
+                }*/
+                $desc = file_get_contents($book . "/desc.txt");
+                $arr = explode('/', $book);
+                $book_dir = end($arr);
+            @endphp
+            @if(isset($str))
+                @if(strpos($title, $str) !== false)
+                    <div class='book first'>
+                        <div class='catalogsbook first'>
+                            <img src='{{ url("books/$book_dir/image.png") }}' alt='' class='cat-img'>
+                        </div>
+                        <div class='btn-block'>
+                            <div class='cat-btn first' title=' {{ "Автор: $author\nНазвание: $title\nО книге: $desc" }}'><h1>Описание</h1></div>
+                            <img id='{{ $book_dir }}' src='{{ url('Photoes/HeartIcon.png') }}' class='heartIcon' title='Добавить в хочу!'/>
+                        </div>
+                    </div>
+                @endif
+            @else 
+                <div class='book first'>
+                    <div class='catalogsbook first'>
+                        <img src='{{ url("books/$book_dir/image.png") }}' alt='' class='cat-img'>
+                    </div>
+                    <div class='btn-block'>
+                        <div class='cat-btn first' title=' {{ "Автор: $author\nНазвание: $title\nО книге: $desc" }}'><h1>Описание</h1></div>
+                        <img id='{{ $book_dir }}' src='{{ url('Photoes/HeartIcon.png') }}' class='heartIcon' title='Добавить в хочу!'/>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+        <script>
+            let hearts = document.querySelectorAll('.btn-block .heartIcon');
+            for (let heartIcon of hearts) {
+                heartIcon.onclick = (ev) => {
+                    fetch("/basket.php?action=add&id=" + ev.target.id, {
+                        credentials: "same-origin"
+                    })
+                        .then(resp => resp.text())
+                        .then(text => console.log(text));
+                };
+            }
+        </script>
+    </div>
 @endsection

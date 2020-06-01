@@ -1,7 +1,8 @@
 @extends('layouts.Order')
 
-@section('catalogcon')
-    <form enctype="multipart/form-data" method="post" id="post_book" action="http://127.0.0.1:8000/add_book.php">
+@section('content')
+    <div style="margin: 100px;" content=""></div>
+    <form enctype="multipart/form-data" method="post" id="post_book" action='{{ url("/add_book.php") }}'>
         <label for="title">Title</label>
         <input name="title" id="title" type="text">
 

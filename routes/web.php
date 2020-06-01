@@ -19,10 +19,7 @@ Route::get('/basket', function () {
 });
 Route::get('/catalog', function () {
     return view('catalog');
-});
-Route::get('/janres', function () {
-    return view('janres');
-});
+})->name('catalog');
 Route::get('/', function () {
     return view('Some');
 });
@@ -32,3 +29,7 @@ Route::get('/Order', function () {
 Route::get('/add', function () {
     return view('add_book');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
