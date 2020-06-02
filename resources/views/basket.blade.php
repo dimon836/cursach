@@ -7,7 +7,7 @@
 
             font-family: Roboto;
             font-style: normal;
-            font-weight: bold;
+            font-seeight: bold;
             font-size: 48px;
             line-height: 56px;
             display: flex;
@@ -102,7 +102,7 @@
 @section('content')
     <div class="titleCatalog">Забронировано</div>
     @php
-        $books_dir = __DIR__ . "/../../../public/books/";
+        $books_dir = base_path("books/");
         $books = glob($books_dir . "*");
     @endphp
     @foreach($books as $book)

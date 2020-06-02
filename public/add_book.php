@@ -1,7 +1,7 @@
 <?php
 if(isset($_FILES['image']['tmp_name'])) {
     $img_src = $_FILES['image']['tmp_name'];
-    $dir = __DIR__ . "/books/";
+    $dir = base_path("books/");
     $count_books = 0;
     $books = glob($dir . "*");
     if ($books) $count_books = count($books);

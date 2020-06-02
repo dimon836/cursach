@@ -2,7 +2,7 @@
 
 @section('content')
     <div style="margin: 100px;" content=""></div>
-    <form enctype="multipart/form-data" method="post" id="post_book" action='{{ url("/add_book.php") }}'>
+    <form enctype="multipart/form-data" method="post" id="post_book" action="add_book.php">
         <label for="title">Title</label>
         <input name="title" id="title" type="text">
 

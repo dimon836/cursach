@@ -16,18 +16,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/basket', function () {
     return view('basket');
-});
+})->name('basket');
+
 Route::get('/catalog', function () {
     return view('catalog');
 })->name('catalog');
+
 Route::get('/', function () {
     return view('Some');
-});
-Route::get('/Order', function () {
-    return view('Order');
-});
+})->name('Some');
+
+Route::get('/mini', function () {
+    return view('MiniOrder');
+})->name('MiniOrder');
+
 Route::get('/add', function () {
     return view('add_book');
+})->name('add');
+
+Route::get('/welcome', function () {
+    return view('welcome');
 });
 
 Auth::routes();

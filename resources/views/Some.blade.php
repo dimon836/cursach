@@ -50,12 +50,15 @@
             font-family: cursive;
             margin: 50px;
         }
+        .wrapper {
+            max-width:1200px;
+        }
     </style>
 @endsection
 @section('content')
 <body>
 <div class="col-10 upper">
-    <div class="exclusive">
+    <div class="exclusive wrapper">
         <div class="leftExclusive">
             <div class="leftExclusiveText">
                 <p class="first_last_text">Самая читаемая книга за всё время:</p>

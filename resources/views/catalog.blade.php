@@ -110,19 +110,15 @@
             /*background-blend-mode: darken;*/
             cursor: pointer;
         }
-        .wrapper {
-            max-width:1200px;
-            margin: 0px auto;
-        }
     </style>
 @endsection
 @section('content')
-    <div class="wrapper">
+    <div>
         <div class="titleCatalog">Каталог</div>
         <div class="downTittleCatalog">Забронируй книгу! И забери в библиотеке!</div>
         @php
             $str = request()->get('search');
-            $books_dir = __DIR__ . "/../../../public/books/";
+            $books_dir = base_path("books/");
             $books = glob($books_dir . "*");
         @endphp
         @foreach($books as $book)
@@ -149,7 +145,7 @@
                         </div>
                     </div>
                 @endif
-            @else 
+            @else
                 <div class='book first'>
                     <div class='catalogsbook first'>
                         <img src='{{ url("books/$book_dir/image.png") }}' alt='' class='cat-img'>
