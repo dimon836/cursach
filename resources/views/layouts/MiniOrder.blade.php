@@ -1,4 +1,3 @@
-@extends('layouts.MiniOrder')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -6,25 +5,9 @@
     <meta name="viewport" content="width=device-width">
     <title>MyShop</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        .header {
-            display: flex;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .main_picture {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 30px;
-            margin-bottom: 70px;
-            height: 135px;
-            width: 220px;
+        .wrbody {
+            display: none;
         }
         .upperRight1{
             background-color: #30C665;
@@ -96,11 +79,11 @@
             padding: 10px;
             text-align: center;
             align-items: center;
-            margin-left: 44px;
+            margin-left: 24px;
         }
         .heart {
-            height: 80px;
-            margin-right: 80px;
+            height: 70px;
+            margin-right: 5px;
             cursor: pointer;
         }
         .rectangles {
@@ -151,35 +134,35 @@
             display: flex;
             align-items: center;
             text-align: center;
-            justify-content: space-between;
+            justify-content: center;
         }
         .socialNetwork {
             height: 24px;
             cursor: pointer;
+            margin-left: 10px;
+            margin-right: 10px;
         }
         .socNet {
             height: 50px;
-            width: 210px;
+            width: 100%;
             /*padding: 14px;*/
             margin-bottom: 15px;
+            background-color: white;
+            border-top: 1px solid orange;
         }
         .socNetText {
             margin-top: 10px;
-        }
-        .footer {
-            width: 100%;
-            display: flex;
+            text-align: center;
+            justify-content: center;
         }
         .copyrightClass {
             background-color: #FE9D3B;
-            text-align: right;
+            text-align: center;
             align-items: center;
+            width: 100%;
         }
         .copyrightText {
             margin-top: 30px;
-        }
-        .lastInfo {
-            margin-bottom: 30px;
         }
         .header_user_dropdown {
             font-size: 17px;
@@ -188,23 +171,24 @@
             background-color: white !important;
             top: 0 !important;
         }
-
+        .notHead {
+            height: 240px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .foot {
+            display: block;
+        }
         @media (max-width: 1320px) {
             .phoneNumber {
                 display: none;
-            }
-            .main_picture {
-                height: 100px;
-                width: 190px;
             }
         }
         @media (max-width: 1150px) {
             .phoneNumber {
                 display: none;
-            }
-            .main_picture {
-                height: 80px;
-                width: 160px;
             }
             .someText {
                 margin-left: 0;
@@ -217,80 +201,59 @@
             }
         }
         @media (max-width: 980px) {
-            .main_picture {
-                height: 70px;
-                width: 130px;
-            }
             .inputPanel {
                 width: 200px;
             }
         }
         @media (max-width: 830px) {
-            .main_picture {
-                margin-bottom: 30px;
-                height: 50px;
-                width: 90px;
-            }
-
             .inputPanel {
                 width: 200px;
             }
-
-            .col-2 {
-                display: none;
+            .wrbody {
+                display: block;
             }
-
-            .col-10 {
-                display: none;
+        }
+        @media (max-width: 450px) {
+            .heart {
+                height: 50px;
+                margin-right: 2px;
             }
-
-            @section('miniCatalogStyle')
-            @endsection
+            .inputPanel {
+                width: 140px;
+            }
+        }
+        @media (max-width: 400px) {
+            .blueText {
+                font-size: 12px;
+            }
+            .darkText {
+                font-size: 12px;
+            }
+            .opacity {
+                font-size: 12px;
+            }
+            .katalog {
+                margin-left: 10px;
+                padding: 6px;
+            }
+        }
+        @media (max-width: 344px) {
+            .upperRight1 {
+                height: 65px;
+            }
+            .inputPanel {
+                width: 100px;
+            }
         }
     </style>
-    @yield('catalogStyle')
+    @yield('miniCatalogStyle')
 </head>
 
 <body>
-<div class="header">
-    <div class="col-2">
-        <a href="/">
-            <img src='{{ url("/Photoes/mainPicture.jpg") }}'
-                 class="main_picture"
-                 alt="Book Shop Be Smart"/>
-        </a>
-        <div>
-            <div>
-                <p class="opacity">Информация</p>
-                <p class="blueText">О нас<br></p>
-                <p class="blueText">Контакты<br></p>
-            </div>
-            <div>
-                <br>
-                <p class="opacity">График работы</p>
-                <p class="darkText">В будние</p>
-                <p class="darkText">с 8:00 до 21:00</p>
-                <p class="darkText">Суббота</p>
-                <p class="darkText">с 9:00 до 20:00</p>
-                <p class="darkText">Воскресенье</p>
-                <p class="darkText">с 10:00 до 19:00</p>
-            </div>
-            <div class="lastInfo">
-                <br>
-                <p class="opacity">Наши библиотеки в Киеве</p>
-                <a href="https://www.google.com/maps/place/%D0%BF%D1%80%D0%BE%D1%81%D0%BF.+%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B,+1,+%D0%9A%D0%B8%D0%B5%D0%B2,+02000/@50.4468754,30.4876693,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4ce8b9d6beb97:0xef3f55f73d9ae2f0!8m2!3d50.446872!4d30.489858" target="_blank">
-                    <p class="blueText">пр. Победы 1</p>
-                </a>
-                <a href="https://www.google.com/maps/place/%D0%93%D1%83%D1%80%D1%82%D0%BE%D0%B6%D0%B8%D1%82%D0%BE%D0%BA+%E2%84%961+%D0%9D%D0%A2%D0%A3%D0%A3+%22%D0%9A%D0%9F%D0%86%22,+%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%90%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D1%96%D0%BA%D0%B0+%D0%AF%D0%BD%D0%B3%D0%B5%D0%BB%D1%8F,+5,+%D0%9A%D0%B8%D1%97%D0%B2,+02000/@50.4498451,30.4512992,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4cc2636b4d71b:0x9fd1e501c1bda3e2!8m2!3d50.4498417!4d30.4534879" target="_blank">
-                    <p class="blueText">ул. Академика-Янгеля 5</p>
-                </a>
-            </div>
-
-        </div>
-    </div>
-    <div class="col-10 upper">
+<div class="wrbody">
+    <div class="upper">
         <div class="upperRight1">
-            Мы работаем в безопасном режиме в связи с вирусом который бушует в данное время.
+            Мы работаем в безопасном режиме.
             <button class="button" type="button"> Подробнее</button>
         </div>
 
@@ -302,7 +265,7 @@
             <p class="someText"> Другие способы связи </p>
             <div class="user">
                 <img class="phoneImage" src='{{ url("/open-iconic-master/svg/person.svg") }}' height=24>
-                <!--<a class="phoneNumber" href="{{ route('login') }}">Войти в личный кабинет</a>-->
+            <!--<a class="phoneNumber" href="{{ route('login') }}">Войти в личный кабинет</a>-->
                 <div class="d-flex align-items-center">
                     @guest
                         <div style="margin-right: 15px">
@@ -322,7 +285,7 @@
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
+                           document.getElementById('logout-form').submit();">
                                 Вийти з аккаунту
                             </a>
 
@@ -354,37 +317,62 @@
                 <img src="{{ url('/open-iconic-master/svg/heart-outline.svg') }}" title="Список желаний" class="heart">
             </a>
         </div>
-        @yield('content')
     </div>
-</div>
+    @yield('miniContent')
+    <div class="foot">
+        <div class="notHead">
+            <div>
+                <p class="opacity">Информация</p>
+                <p class="blueText">О нас<br></p>
+                <p class="blueText">Контакты<br></p>
+            </div>
+            <div>
+                <p class="opacity">График работы</p>
+                <p class="darkText">В будние</p>
+                <p class="darkText">с 8:00 до 21:00</p>
+                <p class="darkText">Суббота</p>
+                <p class="darkText">с 9:00 до 20:00</p>
+                <p class="darkText">Воскресенье</p>
+                <p class="darkText">с 10:00 до 19:00</p>
+            </div>
+            <div>
+                <p class="opacity">Наши библиотеки в Киеве</p>
+                <a href="https://www.google.com/maps/place/%D0%BF%D1%80%D0%BE%D1%81%D0%BF.+%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B,+1,+%D0%9A%D0%B8%D0%B5%D0%B2,+02000/@50.4468754,30.4876693,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4ce8b9d6beb97:0xef3f55f73d9ae2f0!8m2!3d50.446872!4d30.489858" target="_blank">
+                    <p class="blueText">пр. Победы 1</p>
+                </a>
+                <a href="https://www.google.com/maps/place/%D0%93%D1%83%D1%80%D1%82%D0%BE%D0%B6%D0%B8%D1%82%D0%BE%D0%BA+%E2%84%961+%D0%9D%D0%A2%D0%A3%D0%A3+%22%D0%9A%D0%9F%D0%86%22,+%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%90%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D1%96%D0%BA%D0%B0+%D0%AF%D0%BD%D0%B3%D0%B5%D0%BB%D1%8F,+5,+%D0%9A%D0%B8%D1%97%D0%B2,+02000/@50.4498451,30.4512992,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4cc2636b4d71b:0x9fd1e501c1bda3e2!8m2!3d50.4498417!4d30.4534879" target="_blank">
+                    <p class="blueText">ул. Академика-Янгеля 5</p>
+                </a>
+            </div>
+        </div>
 
-<div class="footer">
-    <div class="socNet col-2">
-        <div class="socNetText">
-            <p>Мы в соц. сетях</p>
+        <div class="socNet">
+            <div class="socNetText">
+                <h5>Ми у соціальних мережах</h5>
+            </div>
+            <div class="socialNetworks">
+                <a href="https://www.instagram.com/dima.izvestniy/" target="_blank">
+                    <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/instagram.svg") }}'>
+                </a>
+                <a href="t.me/Dimon836" target="_blank">
+                    <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/telegram.svg") }}'>
+                </a>
+                <a href="" target="_blank">
+                    <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/viber.svg") }}'>
+                </a>
+                <a href="https://www.youtube.com/channel/UC2Rt3uEPfbpfTEtitjz8-1Q?view_as=subscriber" target="_blank">
+                    <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/youtube.svg") }}'>
+                </a>
+                <a href="" target="_blank">
+                    <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/facebook.svg") }}'>
+                </a>
+            </div>
         </div>
-        <div class="socialNetworks">
-            <a href="https://www.instagram.com/dima.izvestniy/" target="_blank">
-                <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/instagram.svg") }}'>
-            </a>
-            <a href="t.me/Dimon836" target="_blank">
-                <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/telegram.svg") }}'>
-            </a>
-            <a href="" target="_blank">
-                <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/viber.svg") }}'>
-            </a>
-            <a href="https://www.youtube.com/channel/UC2Rt3uEPfbpfTEtitjz8-1Q?view_as=subscriber" target="_blank">
-                <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/youtube.svg") }}'>
-            </a>
-            <a href="" target="_blank">
-                <img class="socialNetwork" src='{{ url("/open-iconic-master/svg/facebook.svg") }}'>
-            </a>
+        <div class="copyrightClass">
+            <p class="copyrightText">
+                Copyright © 2020 Всі права захищені.
+            </p>
         </div>
-    </div>
-    <div class="copyrightClass col-10">
-        <p class="copyrightText">
-            Copyright © 2020 Все права защищены.
-        </p>
     </div>
 </div>
 </body>
